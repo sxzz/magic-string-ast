@@ -1,6 +1,6 @@
 {
   "name": "magic-string-ast",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "packageManager": "pnpm@7.29.3",
   "description": "Extend magic-string for Babel AST.",
   "license": "MIT",

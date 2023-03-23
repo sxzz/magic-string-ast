@@ -2,7 +2,7 @@
   "name": "magic-string-ast",
   "version": "0.1.2",
   "packageManager": "pnpm@7.29.3",
-  "description": "Extend magic-string for Babel AST.",
+  "description": "Extend Babel AST for magic-string.",
   "license": "MIT",
   "homepage": "https://github.com/sxzz/magic-string-ast#readme",
   "bugs": {

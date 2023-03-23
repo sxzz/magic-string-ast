@@ -7,6 +7,7 @@ export { MagicStringBase }
 
 export class MagicString extends MagicStringBase {
   removeNode(node: Node | Node[], { offset = 0 }: { offset?: number } = {}) {
+    if (isEmptyNodes(node)) return this
     super.remove(...getNodePos(node, offset))
     return this
   }
@@ -16,11 +17,13 @@ export class MagicString extends MagicStringBase {
     index: number,
     { offset = 0 }: { offset?: number } = {}
   ) {
+    if (isEmptyNodes(node)) return this
     super.move(...getNodePos(node, offset), index)
     return this
   }
 
   sliceNode(node: Node | Node[], { offset = 0 }: { offset?: number } = {}) {
+    if (isEmptyNodes(node)) return ''
     return super.slice(...getNodePos(node, offset))
   }
 
@@ -29,6 +32,8 @@ export class MagicString extends MagicStringBase {
     content: string | Node | Node[],
     { offset = 0, ...options }: OverwriteOptions & { offset?: number } = {}
   ) {
+    if (isEmptyNodes(node)) return this
+
     const _content =
       typeof content === 'string' ? content : this.sliceNode(content)
     super.overwrite(...getNodePos(node, offset), _content, options)
@@ -36,6 +41,11 @@ export class MagicString extends MagicStringBase {
   }
 
   snipNode(node: Node | Node[], { offset = 0 }: { offset?: number } = {}) {
+    if (isEmptyNodes(node))
+      return new MagicStringBase('', {
+        // @ts-expect-error
+        filename: super.filename,
+      })
     return super.snip(...getNodePos(node, offset))
   }
 }
@@ -47,4 +57,8 @@ function getNodePos(
   if (Array.isArray(nodes))
     return [offset + nodes[0].start!, offset + nodes.slice(-1)[0].end!]
   else return [offset + nodes.start!, offset + nodes.end!]
+}
+
+function isEmptyNodes(nodes: Node | Node[]) {
+  return Array.isArray(nodes) && nodes.length === 0
 }

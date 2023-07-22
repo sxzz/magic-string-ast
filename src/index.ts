@@ -1,62 +1,76 @@
 import MagicStringBase from 'magic-string'
-import type { OverwriteOptions } from 'magic-string'
+import type { MagicStringOptions, OverwriteOptions } from 'magic-string'
 import type { Node } from '@babel/types'
 
 export * from 'magic-string'
 export { MagicStringBase }
 
 export class MagicString extends MagicStringBase {
-  removeNode(node: Node | Node[], { offset = 0 }: { offset?: number } = {}) {
+  offset: number
+
+  constructor(
+    str: string,
+    options?: MagicStringOptions & {
+      /** offset of node */
+      offset?: number
+    }
+  ) {
+    super(str, options)
+    this.offset = options?.offset ?? 0
+  }
+
+  private getNodePos(
+    nodes: Node | Node[],
+    offset?: number
+  ): [start: number, end: number] {
+    const _offset = offset ?? this.offset
+    if (Array.isArray(nodes))
+      return [_offset + nodes[0].start!, _offset + nodes.slice(-1)[0].end!]
+    else return [_offset + nodes.start!, _offset + nodes.end!]
+  }
+
+  removeNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
     if (isEmptyNodes(node)) return this
-    super.remove(...getNodePos(node, offset))
+    super.remove(...this.getNodePos(node, offset))
     return this
   }
 
   moveNode(
     node: Node | Node[],
     index: number,
-    { offset = 0 }: { offset?: number } = {}
+    { offset }: { offset?: number } = {}
   ) {
     if (isEmptyNodes(node)) return this
-    super.move(...getNodePos(node, offset), index)
+    super.move(...this.getNodePos(node, offset), index)
     return this
   }
 
-  sliceNode(node: Node | Node[], { offset = 0 }: { offset?: number } = {}) {
+  sliceNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
     if (isEmptyNodes(node)) return ''
-    return super.slice(...getNodePos(node, offset))
+    return super.slice(...this.getNodePos(node, offset))
   }
 
   overwriteNode(
     node: Node | Node[],
     content: string | Node | Node[],
-    { offset = 0, ...options }: OverwriteOptions & { offset?: number } = {}
+    { offset, ...options }: OverwriteOptions & { offset?: number } = {}
   ) {
     if (isEmptyNodes(node)) return this
 
     const _content =
       typeof content === 'string' ? content : this.sliceNode(content)
-    super.overwrite(...getNodePos(node, offset), _content, options)
+    super.overwrite(...this.getNodePos(node, offset), _content, options)
     return this
   }
 
-  snipNode(node: Node | Node[], { offset = 0 }: { offset?: number } = {}) {
+  snipNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
     if (isEmptyNodes(node))
       return new MagicStringBase('', {
         // @ts-expect-error
         filename: super.filename,
       })
-    return super.snip(...getNodePos(node, offset))
+    return super.snip(...this.getNodePos(node, offset))
   }
-}
-
-function getNodePos(
-  nodes: Node | Node[],
-  offset: number
-): [start: number, end: number] {
-  if (Array.isArray(nodes))
-    return [offset + nodes[0].start!, offset + nodes.slice(-1)[0].end!]
-  else return [offset + nodes.start!, offset + nodes.end!]
 }
 
 function isEmptyNodes(nodes: Node | Node[]) {

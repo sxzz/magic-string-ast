@@ -6,6 +6,11 @@ test('basic', () => {
   expect(s.toString()).toBe('foo')
 })
 
+test('offset', () => {
+  const s = new MagicString('hello world', { offset: 6 })
+  expect(s.sliceNode({ start: 0, end: 5 } as any)).toBe('world')
+})
+
 test('empty array', () => {
   const ORIGINAL = 'foo'
   const s = new MagicString(ORIGINAL)

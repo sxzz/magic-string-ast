@@ -1,6 +1,8 @@
-import MagicStringBase from 'magic-string'
-import type { MagicStringOptions, OverwriteOptions } from 'magic-string'
-import type { Node } from '@babel/types'
+import MagicStringBase, {
+  type MagicStringOptions,
+  type OverwriteOptions,
+} from 'magic-string'
+import { type Node } from '@babel/types'
 
 export * from 'magic-string'
 export { MagicStringBase }
@@ -25,7 +27,7 @@ export class MagicString extends MagicStringBase {
   ): [start: number, end: number] {
     const _offset = offset ?? this.offset
     if (Array.isArray(nodes))
-      return [_offset + nodes[0].start!, _offset + nodes.slice(-1)[0].end!]
+      return [_offset + nodes[0].start!, _offset + nodes.at(-1)!.end!]
     else return [_offset + nodes.start!, _offset + nodes.end!]
   }
 

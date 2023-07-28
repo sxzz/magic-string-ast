@@ -78,3 +78,21 @@ export class MagicString extends MagicStringBase {
 function isEmptyNodes(nodes: Node | Node[]) {
   return Array.isArray(nodes) && nodes.length === 0
 }
+
+export function generateTransform(
+  s: MagicStringBase | undefined,
+  id: string
+): { code: string; map: any } | undefined {
+  if (s?.hasChanged()) {
+    return {
+      code: s.toString(),
+      get map() {
+        return s.generateMap({
+          source: id,
+          includeContent: true,
+          hires: 'boundary',
+        })
+      },
+    }
+  }
+}

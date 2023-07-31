@@ -1,7 +1,7 @@
 {
   "name": "magic-string-ast",
   "version": "0.3.0",
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@8.6.11",
   "description": "Extend Babel AST for magic-string.",
   "license": "MIT",
   "homepage": "https://github.com/sxzz/magic-string-ast#readme",
@@ -49,7 +49,7 @@
     "@sxzz/prettier-config": "^1.0.4",
     "@types/node": "^20.4.5",
     "bumpp": "^9.1.1",
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "fast-glob": "^3.3.1",
     "prettier": "^3.0.0",
     "tsup": "^7.1.0",

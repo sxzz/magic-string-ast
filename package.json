@@ -1,7 +1,7 @@
 {
   "name": "magic-string-ast",
   "version": "0.3.0",
-  "packageManager": "pnpm@8.7.6",
+  "packageManager": "pnpm@8.8.0",
   "description": "Extend Babel AST for magic-string.",
   "license": "MIT",
   "homepage": "https://github.com/sxzz/magic-string-ast#readme",
@@ -41,13 +41,13 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "magic-string": "^0.30.3"
+    "magic-string": "^0.30.4"
   },
   "devDependencies": {
-    "@babel/types": "^7.22.19",
+    "@babel/types": "^7.23.0",
     "@sxzz/eslint-config": "^3.6.1",
     "@sxzz/prettier-config": "^1.0.4",
-    "@types/node": "^20.6.5",
+    "@types/node": "^20.8.0",
     "bumpp": "^9.2.0",
     "eslint": "^8.50.0",
     "fast-glob": "^3.3.1",
@@ -55,7 +55,7 @@
     "tsup": "^7.2.0",
     "tsx": "^3.13.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.6"
   },
   "engines": {
     "node": ">=16.14.0"

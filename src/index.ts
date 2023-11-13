@@ -2,7 +2,7 @@ import MagicStringBase, {
   type MagicStringOptions,
   type OverwriteOptions,
 } from 'magic-string'
-import { type Node } from '@babel/types'
+import type { Node } from '@babel/types'
 
 export * from 'magic-string'
 export { MagicStringBase }

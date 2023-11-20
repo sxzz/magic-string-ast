@@ -15,7 +15,7 @@ export class MagicString extends MagicStringBase {
     options?: MagicStringOptions & {
       /** offset of node */
       offset?: number
-    }
+    },
   ) {
     super(str, options)
     this.offset = options?.offset ?? 0
@@ -23,7 +23,7 @@ export class MagicString extends MagicStringBase {
 
   private getNodePos(
     nodes: Node | Node[],
-    offset?: number
+    offset?: number,
   ): [start: number, end: number] {
     const _offset = offset ?? this.offset
     if (Array.isArray(nodes))
@@ -40,7 +40,7 @@ export class MagicString extends MagicStringBase {
   moveNode(
     node: Node | Node[],
     index: number,
-    { offset }: { offset?: number } = {}
+    { offset }: { offset?: number } = {},
   ) {
     if (isEmptyNodes(node)) return this
     super.move(...this.getNodePos(node, offset), index)
@@ -55,7 +55,7 @@ export class MagicString extends MagicStringBase {
   overwriteNode(
     node: Node | Node[],
     content: string | Node | Node[],
-    { offset, ...options }: OverwriteOptions & { offset?: number } = {}
+    { offset, ...options }: OverwriteOptions & { offset?: number } = {},
   ) {
     if (isEmptyNodes(node)) return this
 
@@ -81,7 +81,7 @@ function isEmptyNodes(nodes: Node | Node[]) {
 
 export function generateTransform(
   s: MagicStringBase | undefined,
-  id: string
+  id: string,
 ): { code: string; map: any } | undefined {
   if (s?.hasChanged()) {
     return {

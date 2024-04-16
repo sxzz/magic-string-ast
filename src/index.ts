@@ -7,8 +7,8 @@ import type { Node } from '@babel/types'
 export * from 'magic-string'
 export { MagicStringBase }
 
-// @ts-expect-error
-export class MagicString implements MagicStringBase {
+// @ts-expect-error whatever
+class MagicStringImpl implements MagicStringBase {
   offset: number
   s: MagicStringBase
 
@@ -19,7 +19,6 @@ export class MagicString implements MagicStringBase {
       offset?: number
     },
   ) {
-    // super(str, options)
     this.s = new MagicStringBase(str, options)
     this.offset = options?.offset ?? 0
     return new Proxy(this.s, {
@@ -87,6 +86,12 @@ export class MagicString implements MagicStringBase {
       })
     return this.s.snip(...this.getNodePos(node, offset))
   }
+}
+
+export const MagicString = MagicStringImpl as any as {
+  new (
+    ...args: ConstructorParameters<typeof MagicStringImpl>
+  ): MagicStringImpl & MagicStringBase
 }
 
 function isEmptyNodes(nodes: Node | Node[]) {

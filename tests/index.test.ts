@@ -3,7 +3,8 @@ import { MagicString, MagicStringBase } from '../src'
 
 test('basic', () => {
   const s = new MagicString('foo')
-  expect(s.toString()).toBe('foo')
+  s.append('hello')
+  expect(s.toString()).toBe('foohello')
   expect(s instanceof MagicStringBase).toBe(true)
 })
 

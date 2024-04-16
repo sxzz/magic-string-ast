@@ -7,8 +7,11 @@ import type { Node } from '@babel/types'
 export * from 'magic-string'
 export { MagicStringBase }
 
-// @ts-expect-error whatever
-class MagicStringImpl implements MagicStringBase {
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+export interface MagicString extends MagicStringBase {}
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+export class MagicString implements MagicStringBase {
   offset: number
   s: MagicStringBase
 
@@ -86,12 +89,6 @@ class MagicStringImpl implements MagicStringBase {
       })
     return this.s.snip(...this.getNodePos(node, offset))
   }
-}
-
-export const MagicString = MagicStringImpl as any as {
-  new (
-    ...args: ConstructorParameters<typeof MagicStringImpl>
-  ): MagicStringImpl & MagicStringBase
 }
 
 function isEmptyNodes(nodes: Node | Node[]) {

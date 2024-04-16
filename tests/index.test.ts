@@ -1,9 +1,10 @@
 import { expect, test } from 'vitest'
-import { MagicString } from '../src'
+import { MagicString, MagicStringBase } from '../src'
 
 test('basic', () => {
   const s = new MagicString('foo')
   expect(s.toString()).toBe('foo')
+  expect(s instanceof MagicStringBase).toBe(true)
 })
 
 test('offset', () => {

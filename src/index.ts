@@ -7,8 +7,10 @@ import type { Node } from '@babel/types'
 export * from 'magic-string'
 export { MagicStringBase }
 
-export class MagicString extends MagicStringBase {
+// @ts-expect-error
+export class MagicString implements MagicStringBase {
   offset: number
+  s: MagicStringBase
 
   constructor(
     str: string,
@@ -17,8 +19,20 @@ export class MagicString extends MagicStringBase {
       offset?: number
     },
   ) {
-    super(str, options)
+    // super(str, options)
+    this.s = new MagicStringBase(str, options)
     this.offset = options?.offset ?? 0
+    return new Proxy(this.s, {
+      get: (target, p, receiver) => {
+        let parent = Reflect.get(target, p, receiver)
+        if (parent) {
+          if (typeof parent === 'function') parent = parent.bind(target)
+          return parent
+        }
+
+        return Reflect.get(this, p, receiver)
+      },
+    }) as any
   }
 
   private getNodePos(
@@ -33,7 +47,7 @@ export class MagicString extends MagicStringBase {
 
   removeNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
     if (isEmptyNodes(node)) return this
-    super.remove(...this.getNodePos(node, offset))
+    this.s.remove(...this.getNodePos(node, offset))
     return this
   }
 
@@ -43,13 +57,13 @@ export class MagicString extends MagicStringBase {
     { offset }: { offset?: number } = {},
   ) {
     if (isEmptyNodes(node)) return this
-    super.move(...this.getNodePos(node, offset), index)
+    this.s.move(...this.getNodePos(node, offset), index)
     return this
   }
 
   sliceNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
     if (isEmptyNodes(node)) return ''
-    return super.slice(...this.getNodePos(node, offset))
+    return this.s.slice(...this.getNodePos(node, offset))
   }
 
   overwriteNode(
@@ -61,7 +75,7 @@ export class MagicString extends MagicStringBase {
 
     const _content =
       typeof content === 'string' ? content : this.sliceNode(content)
-    super.overwrite(...this.getNodePos(node, offset), _content, options)
+    this.s.overwrite(...this.getNodePos(node, offset), _content, options)
     return this
   }
 
@@ -71,7 +85,7 @@ export class MagicString extends MagicStringBase {
         // @ts-expect-error
         filename: super.filename,
       })
-    return super.snip(...this.getNodePos(node, offset))
+    return this.s.snip(...this.getNodePos(node, offset))
   }
 }
 

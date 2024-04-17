@@ -13,19 +13,21 @@ npm i magic-string-ast
 ## Usage
 
 ```ts
-import { MagicString } from 'magic-string-ast'
+import { MagicStringAST } from 'magic-string-ast'
 
 const offset = 0
 const node = {
-  // ...
   // AST node from @babel/parser
+  start: 6,
+  end: 7,
+  // ...
 }
 
-const s = new MagicString('const a = 1')
+const s = new MagicStringAST('const a = 1')
+s.sliceNode(node, { offset }) // 'a'
 s.removeNode(node)
 s.moveNode(node, 0)
-console.log(s.sliceNode(node, { offset }))
-s.overwriteNode(node, 'const b = 2')
+s.overwriteNode(node, 'foo')
 ```
 
 For more APIs, see [magic-string](https://github.com/rich-harris/magic-string#usage).
@@ -40,4 +42,4 @@ For more APIs, see [magic-string](https://github.com/rich-harris/magic-string#us
 
 ## License
 
-[MIT](./LICENSE) License © 2023 [三咲智子](https://github.com/sxzz)
+[MIT](./LICENSE) License © 2023-PRESENT [三咲智子](https://github.com/sxzz)

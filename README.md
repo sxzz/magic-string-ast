@@ -1,4 +1,4 @@
-# magic-string-ast [![npm](https://img.shields.io/npm/v/magic-string-ast.svg)](https://npmjs.com/package/magic-string-ast)
+# magic-string-ast [![npm](https://img.shields.io/npm/v/magic-string-ast.svg)](https://npmjs.com/package/magic-string-ast) [![JSR](https://jsr.io/badges/@sxzz/magic-string-ast)](https://jsr.io/@sxzz/magic-string-ast)
 
 [![Unit Test](https://github.com/sxzz/magic-string-ast/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/magic-string-ast/actions/workflows/unit-test.yml)
 

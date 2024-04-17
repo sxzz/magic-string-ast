@@ -7,7 +7,11 @@ Extend Babel AST for [magic-string](https://github.com/rich-harris/magic-string)
 ## Install
 
 ```bash
+# npm
 npm i magic-string-ast
+
+# jsr
+npx jsr add -D @sxzz/magic-string-ast
 ```
 
 ## Usage
@@ -30,7 +34,7 @@ s.moveNode(node, 0)
 s.overwriteNode(node, 'foo')
 ```
 
-For more APIs, see [magic-string](https://github.com/rich-harris/magic-string#usage).
+For more APIs, see [docs](https://jsr.io/@sxzz/magic-string-ast/doc) and [magic-string](https://github.com/rich-harris/magic-string#usage).
 
 ## Sponsors
 

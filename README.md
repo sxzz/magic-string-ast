@@ -2,7 +2,7 @@
 
 [![Unit Test](https://github.com/sxzz/magic-string-ast/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/magic-string-ast/actions/workflows/unit-test.yml)
 
-Extend Babel AST for [magic-string](https://github.com/rich-harris/magic-string).
+[magic-string](https://github.com/rich-harris/magic-string) with Babel AST shortcut.
 
 ## Install
 

@@ -45,7 +45,7 @@ export class MagicStringAST implements MagicString {
     else return [_offset + nodes.start!, _offset + nodes.end!]
   }
 
-  removeNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
+  removeNode(node: Node | Node[], { offset }: { offset?: number } = {}): this {
     if (isEmptyNodes(node)) return this
     this.s.remove(...this.getNodePos(node, offset))
     return this
@@ -55,13 +55,13 @@ export class MagicStringAST implements MagicString {
     node: Node | Node[],
     index: number,
     { offset }: { offset?: number } = {},
-  ) {
+  ): this {
     if (isEmptyNodes(node)) return this
     this.s.move(...this.getNodePos(node, offset), index)
     return this
   }
 
-  sliceNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
+  sliceNode(node: Node | Node[], { offset }: { offset?: number } = {}): string {
     if (isEmptyNodes(node)) return ''
     return this.s.slice(...this.getNodePos(node, offset))
   }
@@ -70,7 +70,7 @@ export class MagicStringAST implements MagicString {
     node: Node | Node[],
     content: string | Node | Node[],
     { offset, ...options }: OverwriteOptions & { offset?: number } = {},
-  ) {
+  ): this {
     if (isEmptyNodes(node)) return this
 
     const _content =
@@ -79,7 +79,10 @@ export class MagicStringAST implements MagicString {
     return this
   }
 
-  snipNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
+  snipNode(
+    node: Node | Node[],
+    { offset }: { offset?: number } = {},
+  ): MagicString {
     if (isEmptyNodes(node))
       return new MagicString('', {
         // @ts-expect-error
@@ -92,7 +95,7 @@ export class MagicStringAST implements MagicString {
     return new MagicStringAST(this.s.clone(), { offset: this.offset })
   }
 
-  toString() {
+  toString(): string {
     return this.s.toString()
   }
 }

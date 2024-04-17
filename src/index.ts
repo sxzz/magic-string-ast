@@ -16,23 +16,22 @@ export class MagicString implements MagicStringBase {
   s: MagicStringBase
 
   constructor(
-    str: string,
+    str: string | MagicStringBase,
     options?: MagicStringOptions & {
       /** offset of node */
       offset?: number
     },
   ) {
-    this.s = new MagicStringBase(str, options)
+    this.s = typeof str === 'string' ? new MagicStringBase(str, options) : str
     this.offset = options?.offset ?? 0
     return new Proxy(this.s, {
       get: (target, p, receiver) => {
-        let parent = Reflect.get(target, p, receiver)
-        if (parent) {
-          if (typeof parent === 'function') parent = parent.bind(target)
-          return parent
-        }
+        const current = Reflect.get(this, p, receiver)
+        if (current) return current
 
-        return Reflect.get(this, p, receiver)
+        let parent = Reflect.get(target, p, receiver)
+        if (typeof parent === 'function') parent = parent.bind(target)
+        return parent
       },
     }) as any
   }
@@ -88,6 +87,14 @@ export class MagicString implements MagicStringBase {
         filename: super.filename,
       })
     return this.s.snip(...this.getNodePos(node, offset))
+  }
+
+  clone(): MagicString {
+    return new MagicString(this.s.clone(), { offset: this.offset })
+  }
+
+  toString() {
+    return this.s.toString()
   }
 }
 

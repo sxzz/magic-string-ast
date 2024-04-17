@@ -6,6 +6,7 @@ test('basic', () => {
   s.append('hello')
   expect(s.toString()).toBe('foohello')
   expect(s instanceof MagicString).toBe(true)
+  expect(s.offset).toBe(0)
 })
 
 test('offset', () => {

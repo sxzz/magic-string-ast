@@ -26,8 +26,7 @@ export class MagicStringAST implements MagicString {
     this.offset = options?.offset ?? 0
     return new Proxy(this.s, {
       get: (target, p, receiver) => {
-        const current = Reflect.get(this, p, receiver)
-        if (current) return current
+        if (Reflect.has(this, p)) return Reflect.get(this, p, receiver)
 
         let parent = Reflect.get(target, p, receiver)
         if (typeof parent === 'function') parent = parent.bind(target)

@@ -1,8 +1,14 @@
 {
   "name": "@sxzz/magic-string-ast",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "exports": "./src/index.ts",
   "publish": {
-    "include": ["src", "package.json", "jsr.json", "README.md", "LICENSE"]
+    "include": [
+      "src",
+      "package.json",
+      "jsr.json",
+      "README.md",
+      "LICENSE"
+    ]
   }
 }

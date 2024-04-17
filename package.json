@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "packageManager": "pnpm@9.0.1",
   "description": "Extend Babel AST for magic-string.",
+  "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/sxzz/magic-string-ast#readme",
   "bugs": {
@@ -16,16 +17,12 @@
     "dist"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": {
-        "require": "./dist/index.d.ts",
-        "import": "./dist/index.d.mts"
-      },
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     },
     "./*": "./*"
   },

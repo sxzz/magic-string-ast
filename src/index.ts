@@ -82,13 +82,11 @@ export class MagicStringAST implements MagicString {
   snipNode(
     node: Node | Node[],
     { offset }: { offset?: number } = {},
-  ): MagicString {
-    if (isEmptyNodes(node))
-      return new MagicString('', {
-        // @ts-expect-error
-        filename: super.filename,
-      })
-    return this.s.snip(...this.getNodePos(node, offset))
+  ): MagicStringAST {
+    let newS: MagicString
+    if (isEmptyNodes(node)) newS = this.s.snip(0, 0)
+    else newS = this.s.snip(...this.getNodePos(node, offset))
+    return new MagicStringAST(newS, { offset: this.offset })
   }
 
   clone(): MagicStringAST {

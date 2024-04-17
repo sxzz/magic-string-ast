@@ -1,20 +1,20 @@
 import { expect, test } from 'vitest'
-import { MagicString, MagicStringBase } from '../src'
+import { MagicString, MagicStringAST } from '../src'
 
 test('basic', () => {
-  const s = new MagicString('foo')
+  const s = new MagicStringAST('foo')
   s.append('hello')
   expect(s.toString()).toBe('foohello')
-  expect(s instanceof MagicStringBase).toBe(true)
+  expect(s instanceof MagicString).toBe(true)
 })
 
 test('offset', () => {
-  const s = new MagicString('hello world', { offset: 6 })
+  const s = new MagicStringAST('hello world', { offset: 6 })
   expect(s.sliceNode({ start: 0, end: 5 } as any)).toBe('world')
 })
 
 test('clone', () => {
-  const s1 = new MagicString('hello world', { offset: 6 })
+  const s1 = new MagicStringAST('hello world', { offset: 6 })
   const s2 = s1.clone()
   s1.append('!')
 
@@ -30,7 +30,7 @@ test('clone', () => {
 
 test('empty array', () => {
   const ORIGINAL = 'foo'
-  const s = new MagicString(ORIGINAL)
+  const s = new MagicStringAST(ORIGINAL)
   expect(s.sliceNode([])).toBe('')
   expect(s.snipNode([]).toString()).toBe('')
   expect(s.overwriteNode([], 'new').toString()).toBe(ORIGINAL)

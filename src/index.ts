@@ -1,28 +1,28 @@
-import MagicStringBase, {
+import MagicString, {
   type MagicStringOptions,
   type OverwriteOptions,
 } from 'magic-string'
 import type { Node } from '@babel/types'
 
 export * from 'magic-string'
-export { MagicStringBase }
+export { MagicString }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export interface MagicString extends MagicStringBase {}
+export interface MagicStringAST extends MagicString {}
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export class MagicString implements MagicStringBase {
+export class MagicStringAST implements MagicString {
   offset: number
-  s: MagicStringBase
+  s: MagicString
 
   constructor(
-    str: string | MagicStringBase,
+    str: string | MagicString,
     options?: MagicStringOptions & {
       /** offset of node */
       offset?: number
     },
   ) {
-    this.s = typeof str === 'string' ? new MagicStringBase(str, options) : str
+    this.s = typeof str === 'string' ? new MagicString(str, options) : str
     this.offset = options?.offset ?? 0
     return new Proxy(this.s, {
       get: (target, p, receiver) => {
@@ -82,15 +82,15 @@ export class MagicString implements MagicStringBase {
 
   snipNode(node: Node | Node[], { offset }: { offset?: number } = {}) {
     if (isEmptyNodes(node))
-      return new MagicStringBase('', {
+      return new MagicString('', {
         // @ts-expect-error
         filename: super.filename,
       })
     return this.s.snip(...this.getNodePos(node, offset))
   }
 
-  clone(): MagicString {
-    return new MagicString(this.s.clone(), { offset: this.offset })
+  clone(): MagicStringAST {
+    return new MagicStringAST(this.s.clone(), { offset: this.offset })
   }
 
   toString() {
@@ -103,7 +103,7 @@ function isEmptyNodes(nodes: Node | Node[]) {
 }
 
 export function generateTransform(
-  s: MagicStringBase | undefined,
+  s: MagicString | undefined,
   id: string,
 ): { code: string; map: any } | undefined {
   if (s?.hasChanged()) {

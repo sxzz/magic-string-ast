@@ -89,8 +89,8 @@ export class MagicStringAST implements MagicString {
     return new MagicStringAST(newS, { offset: this.offset })
   }
 
-  clone(): MagicStringAST {
-    return new MagicStringAST(this.s.clone(), { offset: this.offset })
+  clone(): this {
+    return new MagicStringAST(this.s.clone(), { offset: this.offset }) as any
   }
 
   toString(): string {

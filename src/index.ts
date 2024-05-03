@@ -21,8 +21,11 @@ export class MagicStringAST implements MagicString {
       /** offset of node */
       offset?: number
     },
+    private prototype: typeof MagicString = typeof str === 'string'
+      ? MagicString
+      : (str.constructor as any),
   ) {
-    this.s = typeof str === 'string' ? new MagicString(str, options) : str
+    this.s = typeof str === 'string' ? new prototype(str, options) : str
     this.offset = options?.offset ?? 0
     return new Proxy(this.s, {
       get: (target, p, receiver) => {
@@ -86,11 +89,15 @@ export class MagicStringAST implements MagicString {
     let newS: MagicString
     if (isEmptyNodes(node)) newS = this.s.snip(0, 0)
     else newS = this.s.snip(...this.getNodePos(node, offset))
-    return new MagicStringAST(newS, { offset: this.offset })
+    return new MagicStringAST(newS, { offset: this.offset }, this.prototype)
   }
 
   clone(): this {
-    return new MagicStringAST(this.s.clone(), { offset: this.offset }) as any
+    return new MagicStringAST(
+      this.s.clone(),
+      { offset: this.offset },
+      this.prototype,
+    ) as any
   }
 
   toString(): string {

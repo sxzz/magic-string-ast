@@ -1,4 +1,5 @@
 import { expect, test } from 'vitest'
+import MagicStringStack from 'magic-string-stack'
 import { MagicString, MagicStringAST } from '../src'
 
 test('basic', () => {
@@ -36,4 +37,20 @@ test('empty array', () => {
   expect(s.snipNode([]).toString()).toBe('')
   expect(s.overwriteNode([], 'new').toString()).toBe(ORIGINAL)
   expect(s.moveNode([], 0).toString()).toBe(ORIGINAL)
+})
+
+test('compatible with magic-string-stack', () => {
+  const s = new MagicStringAST(
+    'hello world',
+    undefined,
+    MagicStringStack,
+  ) as MagicStringAST & MagicStringStack
+  expect(s.commit).toBeDefined()
+  expect(s.clone().commit).toBeDefined()
+
+  const s2 = new MagicStringAST(
+    new MagicStringStack('hello world'),
+  ) as MagicStringAST & MagicStringStack
+  expect(s2.commit).toBeDefined()
+  expect(s2.clone().commit).toBeDefined()
 })

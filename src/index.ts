@@ -10,6 +10,9 @@ export { MagicString }
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface MagicStringAST extends MagicString {}
 
+/**
+ * MagicString with AST manipulation
+ */
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class MagicStringAST implements MagicString {
   offset: number
@@ -109,6 +112,9 @@ function isEmptyNodes(nodes: Node | Node[]) {
   return Array.isArray(nodes) && nodes.length === 0
 }
 
+/**
+ * Generate an object of code and source map from MagicString.
+ */
 export function generateTransform(
   s: MagicString | undefined,
   id: string,

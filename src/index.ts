@@ -112,13 +112,18 @@ function isEmptyNodes(nodes: Node | Node[]) {
   return Array.isArray(nodes) && nodes.length === 0
 }
 
+export interface CodeTransform {
+  code: string
+  map: any
+}
+
 /**
  * Generate an object of code and source map from MagicString.
  */
 export function generateTransform(
   s: MagicString | undefined,
   id: string,
-): { code: string; map: any } | undefined {
+): CodeTransform | undefined {
   if (s?.hasChanged()) {
     return {
       code: s.toString(),

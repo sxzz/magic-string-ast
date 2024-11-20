@@ -1,7 +1,7 @@
 {
   "name": "magic-string-ast",
   "version": "0.6.2",
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.14.1",
   "description": "magic-string with Babel AST shortcut.",
   "type": "module",
   "license": "MIT",
@@ -40,22 +40,22 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "magic-string": "^0.30.10"
+    "magic-string": "^0.30.13"
   },
   "devDependencies": {
-    "@babel/types": "^7.24.7",
-    "@sxzz/eslint-config": "^4.1.1",
+    "@babel/types": "^7.26.0",
+    "@sxzz/eslint-config": "^4.4.1",
     "@sxzz/prettier-config": "^2.0.2",
     "@types/node": "^22.9.1",
-    "bumpp": "^9.4.1",
-    "eslint": "^9.5.0",
+    "bumpp": "^9.8.1",
+    "eslint": "^9.15.0",
     "fast-glob": "^3.3.2",
     "magic-string-stack": "^0.1.1",
-    "prettier": "^3.3.2",
-    "tsup": "^8.1.0",
-    "tsx": "^4.15.7",
-    "typescript": "^5.5.2",
-    "vitest": "^2.0.3"
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
   },
   "engines": {
     "node": ">=16.14.0"

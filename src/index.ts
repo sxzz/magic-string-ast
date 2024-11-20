@@ -112,6 +112,9 @@ function isEmptyNodes(nodes: Node | Node[]) {
   return Array.isArray(nodes) && nodes.length === 0
 }
 
+/**
+ * The result of code transformation.
+ */
 export interface CodeTransform {
   code: string
   map: any

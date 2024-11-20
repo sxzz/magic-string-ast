@@ -1,6 +1,6 @@
 {
   "name": "@sxzz/magic-string-ast",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "exports": "./src/index.ts",
   "publish": {
     "include": [

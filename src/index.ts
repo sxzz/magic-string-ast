@@ -39,6 +39,11 @@ export class MagicStringAST implements MagicString {
         if (typeof parent === 'function') parent = parent.bind(target)
         return parent
       },
+      set: (target, p, value, receiver) => {
+        if (Reflect.has(this, p)) return Reflect.set(this, p, value)
+
+        return Reflect.set(target, p, value, receiver)
+      }
     }) as any
   }
 

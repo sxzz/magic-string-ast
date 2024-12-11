@@ -20,6 +20,9 @@ test('offset', () => {
 
   expect(s.update(-1, 0, '').toString()).toBe('hello, world')
   expect(s.overwrite(0, 1, 'w').toString()).toBe('hello,world')
+
+  s.offset = 12
+  expect(s.offset).toBe(12)
 })
 
 test('clone', () => {

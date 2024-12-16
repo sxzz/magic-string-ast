@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       magic-string:
-        specifier: ^0.30.13
-        version: 0.30.13
+        specifier: ^0.30.16
+        version: 0.30.16
     devDependencies:
       '@babel/types':
         specifier: ^7.26.0
@@ -1648,8 +1648,8 @@ packages:
   magic-string-stack@0.1.1:
     resolution: {integrity: sha512-TnOt1Dui/lM8Jrh7B+lGPPfNcczr6gUlFOJ8Calqs1KAuEn8NFab67vXz3F9cetX9YLJeQrEycjz2z0Wj90taw==}
 
-  magic-string@0.30.13:
-    resolution: {integrity: sha512-8rYBO+MsWkgjDSOvLomYnzhdwEG51olQ4zL5KXnNJWV5MNmrb4rTZdrtkhxjnD/QyZUqR/Z/XDsUs/4ej2nx0g==}
+  magic-string@0.30.16:
+    resolution: {integrity: sha512-GOWufviMYkLKe5PYGHutkqYlntF0qDMlrZLObkQGbdmkcQAxwe7KDLlX8MKlLXQc8GwFqINYp29HpKw2t3iRoQ==}
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
@@ -3058,7 +3058,7 @@ snapshots:
       '@typescript-eslint/utils': 8.15.0(eslint@9.15.0(jiti@1.21.6))(typescript@5.6.3)
       '@unocss/config': 0.64.1
       '@unocss/core': 0.64.1
-      magic-string: 0.30.13
+      magic-string: 0.30.16
       synckit: 0.9.2
     transitivePeerDependencies:
       - eslint
@@ -3076,7 +3076,7 @@ snapshots:
     dependencies:
       '@vitest/spy': 2.1.5
       estree-walker: 3.0.3
-      magic-string: 0.30.13
+      magic-string: 0.30.16
     optionalDependencies:
       vite: 5.4.11(@types/node@22.9.1)
 
@@ -3092,7 +3092,7 @@ snapshots:
   '@vitest/snapshot@2.1.5':
     dependencies:
       '@vitest/pretty-format': 2.1.5
-      magic-string: 0.30.13
+      magic-string: 0.30.16
       pathe: 1.1.2
 
   '@vitest/spy@2.1.5':
@@ -3985,9 +3985,9 @@ snapshots:
   magic-string-stack@0.1.1:
     dependencies:
       '@ampproject/remapping': 2.3.0
-      magic-string: 0.30.13
+      magic-string: 0.30.16
 
-  magic-string@0.30.13:
+  magic-string@0.30.16:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
@@ -4887,7 +4887,7 @@ snapshots:
       chai: 5.1.2
       debug: 4.3.7
       expect-type: 1.1.0
-      magic-string: 0.30.13
+      magic-string: 0.30.16
       pathe: 1.1.2
       std-env: 3.8.0
       tinybench: 2.9.0

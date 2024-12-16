@@ -89,7 +89,7 @@ export class MagicStringAST implements MagicString {
   snipNode(
     node: Node | Node[],
     { offset }: { offset?: number } = {},
-  ): MagicString {
+  ): MagicStringAST {
     let newS: MagicString
     if (isEmptyNodes(node)) newS = this.s.snip(0, 0)
     else newS = this.s.snip(...this.getNodePos(node, offset))

@@ -8,7 +8,7 @@ export * from 'magic-string'
 export { MagicString }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
-export interface MagicStringAST extends MagicString { }
+export interface MagicStringAST extends MagicString {}
 
 /**
  * MagicString with AST manipulation

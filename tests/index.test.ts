@@ -1,5 +1,5 @@
-import { expect, test } from 'vitest'
 import MagicStringStack from 'magic-string-stack'
+import { expect, test } from 'vitest'
 import { MagicString, MagicStringAST } from '../src'
 
 test('basic', () => {
@@ -12,7 +12,17 @@ test('basic', () => {
 
 test('offset', () => {
   const s = new MagicStringAST('hello world', { offset: 6 })
+  expect(s.slice(0, 5)).toBe('world')
   expect(s.sliceNode({ start: 0, end: 5 } as any)).toBe('world')
+
+  expect(s.appendLeft(0, ',').toString()).toBe('hello ,world')
+  expect(s.appendRight(0, ' ').toString()).toBe('hello , world')
+
+  expect(s.update(-1, 0, '').toString()).toBe('hello, world')
+  expect(s.overwrite(0, 1, 'w').toString()).toBe('hello,world')
+
+  s.offset = 12
+  expect(s.offset).toBe(12)
 })
 
 test('clone', () => {

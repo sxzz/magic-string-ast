@@ -15,15 +15,11 @@ export interface MagicStringAST extends MagicString {}
  */
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class MagicStringAST implements MagicString {
-  offset: number
   s: MagicString
 
   constructor(
     str: string | MagicString,
-    options?: MagicStringOptions & {
-      /** offset of node */
-      offset?: number
-    },
+    options?: MagicStringOptions,
     private prototype: typeof MagicString = typeof str === 'string'
       ? MagicString
       : (str.constructor as any),
@@ -38,6 +34,11 @@ export class MagicStringAST implements MagicString {
         if (typeof parent === 'function') parent = parent.bind(target)
         return parent
       },
+      set: (target, p, value, receiver) => {
+        if (Reflect.has(this, p)) return Reflect.set(this, p, value)
+
+        return Reflect.set(target, p, value, receiver)
+      },
     }) as any
   }
 
@@ -45,7 +46,7 @@ export class MagicStringAST implements MagicString {
     nodes: Node | Node[],
     offset?: number,
   ): [start: number, end: number] {
-    const _offset = offset ?? this.offset
+    const _offset = offset ?? 0
     if (Array.isArray(nodes))
       return [_offset + nodes[0].start!, _offset + nodes.at(-1)!.end!]
     else return [_offset + nodes.start!, _offset + nodes.end!]

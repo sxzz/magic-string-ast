@@ -25,7 +25,6 @@ export class MagicStringAST implements MagicString {
       : (str.constructor as any),
   ) {
     this.s = typeof str === 'string' ? new prototype(str, options) : str
-    this.offset = options?.offset ?? 0
     return new Proxy(this.s, {
       get: (target, p, receiver) => {
         if (Reflect.has(this, p)) return Reflect.get(this, p, receiver)
@@ -34,22 +33,16 @@ export class MagicStringAST implements MagicString {
         if (typeof parent === 'function') parent = parent.bind(target)
         return parent
       },
-      set: (target, p, value, receiver) => {
-        if (Reflect.has(this, p)) return Reflect.set(this, p, value)
-
-        return Reflect.set(target, p, value, receiver)
-      },
     }) as any
   }
 
   private getNodePos(
     nodes: Node | Node[],
-    offset?: number,
+    offset: number = 0,
   ): [start: number, end: number] {
-    const _offset = offset ?? 0
     if (Array.isArray(nodes))
-      return [_offset + nodes[0].start!, _offset + nodes.at(-1)!.end!]
-    else return [_offset + nodes.start!, _offset + nodes.end!]
+      return [offset + nodes[0].start!, offset + nodes.at(-1)!.end!]
+    else return [offset + nodes.start!, offset + nodes.end!]
   }
 
   removeNode(node: Node | Node[], { offset }: { offset?: number } = {}): this {
@@ -93,15 +86,11 @@ export class MagicStringAST implements MagicString {
     let newS: MagicString
     if (isEmptyNodes(node)) newS = this.s.snip(0, 0)
     else newS = this.s.snip(...this.getNodePos(node, offset))
-    return new MagicStringAST(newS, { offset: this.offset }, this.prototype)
+    return new MagicStringAST(newS, undefined, this.prototype)
   }
 
   clone(): this {
-    return new MagicStringAST(
-      this.s.clone(),
-      { offset: this.offset },
-      this.prototype,
-    ) as any
+    return new MagicStringAST(this.s.clone(), undefined, this.prototype) as any
   }
 
   toString(): string {

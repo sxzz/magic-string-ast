@@ -1,7 +1,7 @@
 {
   "name": "magic-string-ast",
   "version": "0.7.0",
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.4.1",
   "description": "magic-string with Babel AST shortcut.",
   "type": "module",
   "license": "MIT",

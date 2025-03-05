@@ -10,25 +10,26 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        run: corepack enable
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
 
-      - name: Set node
+      - name: Set node LTS
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: pnpm
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
       - name: Install
-        run: nci
+        run: pnpm install
 
       - name: Lint
-        run: nr lint
+        run: pnpm run lint
+
+      - name: Typecheck
+        run: pnpm run typecheck
 
   test:
     runs-on: ${{ matrix.os }}
@@ -36,28 +37,27 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [18, 20]
+        node: [20, 22]
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup pnpm
-        run: corepack enable
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set node
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4.1.0
+
+      - name: Set node ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: pnpm
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
       - name: Install
-        run: nci
+        run: pnpm install
 
       - name: Build
-        run: nr build
+        run: pnpm run build
 
       - name: Test
-        run: nr test
+        run: pnpm run test

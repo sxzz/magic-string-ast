@@ -2,10 +2,14 @@ import MagicString, {
   type MagicStringOptions,
   type OverwriteOptions,
 } from 'magic-string'
-import type { Node } from '@babel/types'
 
 export * from 'magic-string'
 export { MagicString }
+
+interface Node {
+  start?: number
+  end?: number
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface MagicStringAST extends MagicString {}

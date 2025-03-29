@@ -1,8 +1,8 @@
 {
   "name": "magic-string-ast",
   "version": "0.8.0",
-  "packageManager": "pnpm@10.5.2",
-  "description": "magic-string with Babel AST shortcut.",
+  "packageManager": "pnpm@10.7.0",
+  "description": "magic-string with AST shortcut.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://github.com/sxzz/magic-string-ast#readme",
@@ -42,18 +42,18 @@
     "magic-string": "^0.30.17"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^5.2.0",
-    "@sxzz/prettier-config": "^2.2.0",
-    "@types/node": "^22.13.9",
-    "bumpp": "^10.0.3",
-    "eslint": "^9.21.0",
+    "@sxzz/eslint-config": "^6.1.0",
+    "@sxzz/prettier-config": "^2.2.1",
+    "@types/node": "^22.13.14",
+    "bumpp": "^10.1.0",
+    "eslint": "^9.23.0",
     "fast-glob": "^3.3.3",
     "magic-string-stack": "^1.0.0",
     "prettier": "^3.5.3",
-    "tsdown": "^0.6.3",
+    "tsdown": "^0.6.10",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.9"
   },
   "engines": {
     "node": ">=20.18.0"

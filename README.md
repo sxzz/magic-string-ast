@@ -2,7 +2,7 @@
 
 [![Unit Test](https://github.com/sxzz/magic-string-ast/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/magic-string-ast/actions/workflows/unit-test.yml)
 
-[magic-string](https://github.com/rich-harris/magic-string) with Babel AST shortcut.
+[magic-string](https://github.com/rich-harris/magic-string) with AST shortcut.
 
 ## Install
 
@@ -21,7 +21,7 @@ import { MagicStringAST } from 'magic-string-ast'
 
 const offset = 0
 const node = {
-  // AST node from @babel/parser
+  // AST node with `start` and `end` properties
   start: 6,
   end: 7,
   // ...

@@ -7,8 +7,8 @@ export * from 'magic-string'
 export { MagicString }
 
 interface Node {
-  start?: number
-  end?: number
+  start?: number | null
+  end?: number | null
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging

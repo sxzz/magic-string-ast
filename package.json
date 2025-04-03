@@ -1,6 +1,6 @@
 {
   "name": "magic-string-ast",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "packageManager": "pnpm@10.7.1",
   "description": "magic-string with AST shortcut.",
   "type": "module",

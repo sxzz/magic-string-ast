@@ -42,7 +42,7 @@
     "magic-string": "^0.30.17"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^6.1.1",
+    "@sxzz/eslint-config": "^7.0.4",
     "@sxzz/prettier-config": "^2.2.1",
     "@types/node": "^22.14.0",
     "bumpp": "^10.1.0",

@@ -100,6 +100,62 @@ export class MagicStringAST implements MagicString {
   toString(): string {
     return this.s.toString()
   }
+
+  private replaceRangeMap: Record<
+    number,
+    { usedNodes: Node[]; offsets: Record<number, number> }
+  > = {}
+
+  /**
+   * Replace a range of text with new nodes.
+   * @param start The start index of the range to replace.
+   * @param end The end index of the range to replace.
+   * @param nodes The nodes or strings to insert into the range.
+   */
+  replaceRange(start: number, end: number, ...nodes: (string | Node)[]): this {
+    const { usedNodes, offsets } =
+      this.replaceRangeMap[this.offset] ||
+      (this.replaceRangeMap[this.offset] = { usedNodes: [], offsets: {} })
+
+    if (nodes.length) {
+      let index = offsets[start] || 0
+      let intro = ''
+      let prevNode
+      for (const node of nodes) {
+        if (typeof node === 'string') {
+          node && (intro += node)
+        } else {
+          this.move(node.start!, node.end!, start)
+          index = node.start!
+          prevNode = node
+          if (intro) {
+            this.appendRight(index, intro)
+            intro = ''
+          }
+          usedNodes.push(node)
+        }
+      }
+      if (intro) {
+        this.appendLeft(prevNode?.end || start, intro)
+      }
+      offsets[start] = index
+    }
+
+    if (end > start) {
+      let index = start
+      usedNodes
+        .filter((node) => node.start! >= start && node.end! <= end)
+        .sort((a, b) => a.start! - b.start!)
+        .forEach((node) => {
+          if (node.start! > index) {
+            this.remove(index, node.start!)
+          }
+          index = node.end!
+        })
+      this.remove(index, end)
+    }
+    return this
+  }
 }
 
 function isEmptyNodes(nodes: Node | Node[]) {

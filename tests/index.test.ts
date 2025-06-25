@@ -64,3 +64,23 @@ test('compatible with magic-string-stack', () => {
   expect(s2.commit).toBeDefined()
   expect(s2.clone().commit).toBeDefined()
 })
+
+test('replaceRange', () => {
+  const s = new MagicStringAST('hello world')
+
+  s.replaceRange(5, 5, ',')
+  expect(s.toString()).toBe('hello, world')
+
+  s.replaceRange(
+    5,
+    6,
+    { start: 6, end: 7 },
+    'hethe',
+    { start: 8, end: 9 },
+    ' or ',
+  )
+  expect(s.toString()).toBe('hello,whether or old')
+
+  s.replaceRange(5, 11)
+  expect(s.toString()).toBe('hello,whether or ')
+})

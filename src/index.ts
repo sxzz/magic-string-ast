@@ -103,7 +103,7 @@ export class MagicStringAST implements MagicString {
 
   private replaceRangeState: Record<
     number,
-    { usedNodes: Node[]; indexes: Record<number, number> }
+    { nodes: Node[]; indexes: Record<number, number> }
   > = {}
 
   /**
@@ -113,12 +113,12 @@ export class MagicStringAST implements MagicString {
    * @param nodes The nodes or strings to insert into the range.
    */
   replaceRange(start: number, end: number, ...nodes: (string | Node)[]): this {
-    const { usedNodes, indexes } =
+    const state =
       this.replaceRangeState[this.offset] ||
-      (this.replaceRangeState[this.offset] = { usedNodes: [], indexes: {} })
+      (this.replaceRangeState[this.offset] = { nodes: [], indexes: {} })
 
     if (nodes.length) {
-      let index = indexes[start] || 0
+      let index = state.indexes[start] || 0
       let intro = ''
       let prevNode
       for (const node of nodes) {
@@ -132,18 +132,18 @@ export class MagicStringAST implements MagicString {
             this.appendRight(index, intro)
             intro = ''
           }
-          usedNodes.push(node)
+          state.nodes.push(node)
         }
       }
       if (intro) {
         this.appendLeft(prevNode?.end || start, intro)
       }
-      indexes[start] = index
+      state.indexes[start] = index
     }
 
     if (end > start) {
       let index = start
-      usedNodes
+      state.nodes
         .filter((node) => node.start! >= start && node.end! <= end)
         .sort((a, b) => a.start! - b.start!)
         .forEach((node) => {

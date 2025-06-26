@@ -32,6 +32,11 @@ s.sliceNode(node, { offset }) // 'a'
 s.removeNode(node)
 s.moveNode(node, 0)
 s.overwriteNode(node, 'foo')
+
+// support source-map, inspired by muggle-string.
+s.replaceRange(5, 5, '(', expression, ')') // appendLeft
+s.replaceRange(5, 8, '(', expression, ')') // overwrite
+s.replaceRange(5, 8) // remove
 ```
 
 For more APIs, see [docs](https://jsr.io/@sxzz/magic-string-ast/doc) and [magic-string](https://github.com/rich-harris/magic-string#usage).

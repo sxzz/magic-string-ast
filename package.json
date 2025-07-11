@@ -1,7 +1,7 @@
 {
   "name": "magic-string-ast",
   "version": "1.0.0",
-  "packageManager": "pnpm@10.12.3",
+  "packageManager": "pnpm@10.13.1",
   "description": "magic-string with AST shortcut.",
   "type": "module",
   "license": "MIT",
@@ -42,14 +42,14 @@
     "magic-string": "^0.30.17"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.0.4",
+    "@sxzz/eslint-config": "^7.0.5",
     "@sxzz/prettier-config": "^2.2.3",
-    "@types/node": "^24.0.4",
+    "@types/node": "^24.0.13",
     "bumpp": "^10.2.0",
-    "eslint": "^9.29.0",
+    "eslint": "^9.31.0",
     "fast-glob": "^3.3.3",
     "magic-string-stack": "^1.0.0",
-    "prettier": "^3.6.1",
+    "prettier": "^3.6.2",
     "tsdown": "^0.12.9",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",

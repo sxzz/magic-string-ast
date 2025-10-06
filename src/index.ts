@@ -145,7 +145,7 @@ export class MagicStringAST implements MagicString {
       let index = start
       state.nodes
         .filter((node) => node.start! >= start && node.end! <= end)
-        .sort((a, b) => a.start! - b.start!)
+        .toSorted((a, b) => a.start! - b.start!)
         .forEach((node) => {
           if (node.start! > index) {
             this.remove(index, node.start!)

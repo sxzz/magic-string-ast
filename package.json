@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/sxzz/magic-string-ast.git"
   },
-  "author": "三咲智子 Kevin Deng <sxzz@sxzz.moe>",
+  "author": "Kevin Deng <sxzz@sxzz.moe>",
   "funding": "https://github.com/sponsors/sxzz",
   "files": [
     "dist"
@@ -56,7 +56,7 @@
     "vitest": "^3.2.4"
   },
   "engines": {
-    "node": ">=20.18.0"
+    "node": ">=20.19.0"
   },
   "prettier": "@sxzz/prettier-config",
   "tsdown": {

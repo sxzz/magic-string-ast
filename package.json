@@ -1,7 +1,7 @@
 {
   "name": "magic-string-ast",
   "version": "1.0.3",
-  "packageManager": "pnpm@10.18.1",
+  "packageManager": "pnpm@10.23.0",
   "description": "magic-string with AST shortcut.",
   "type": "module",
   "license": "MIT",
@@ -18,11 +18,11 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -39,21 +39,19 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "magic-string": "^0.30.19"
+    "magic-string": "^0.30.21"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.2.7",
-    "@sxzz/prettier-config": "^2.2.4",
-    "@types/node": "^24.7.0",
+    "@sxzz/eslint-config": "^7.3.2",
+    "@sxzz/prettier-config": "^2.2.5",
+    "@types/node": "^24.10.1",
     "bumpp": "^10.3.1",
-    "eslint": "^9.37.0",
-    "fast-glob": "^3.3.3",
+    "eslint": "^9.39.1",
     "magic-string-stack": "^1.1.0",
     "prettier": "^3.6.2",
-    "tsdown": "^0.15.6",
-    "tsx": "^4.20.6",
+    "tsdown": "^0.16.7",
     "typescript": "^5.9.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.14"
   },
   "engines": {
     "node": ">=20.19.0"

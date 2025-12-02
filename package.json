@@ -1,32 +1,35 @@
 {
   "name": "magic-string-ast",
-  "version": "1.0.3",
-  "packageManager": "pnpm@10.23.0",
-  "description": "magic-string with AST shortcut.",
   "type": "module",
+  "version": "1.0.3",
+  "packageManager": "pnpm@10.24.0",
+  "description": "magic-string with AST shortcut.",
+  "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/sxzz",
   "homepage": "https://github.com/sxzz/magic-string-ast#readme",
-  "bugs": {
-    "url": "https://github.com/sxzz/magic-string-ast/issues"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sxzz/magic-string-ast.git"
   },
-  "author": "Kevin Deng <sxzz@sxzz.moe>",
-  "funding": "https://github.com/sponsors/sxzz",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "bugs": {
+    "url": "https://github.com/sxzz/magic-string-ast/issues"
+  },
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   },
   "scripts": {
     "lint": "eslint .",
@@ -42,19 +45,16 @@
     "magic-string": "^0.30.21"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.3.2",
-    "@sxzz/prettier-config": "^2.2.5",
+    "@sxzz/eslint-config": "^7.4.1",
+    "@sxzz/prettier-config": "^2.2.6",
     "@types/node": "^24.10.1",
-    "bumpp": "^10.3.1",
+    "bumpp": "^10.3.2",
     "eslint": "^9.39.1",
     "magic-string-stack": "^1.1.0",
-    "prettier": "^3.6.2",
-    "tsdown": "^0.16.7",
+    "prettier": "^3.7.3",
+    "tsdown": "^0.17.0-beta.5",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.14"
-  },
-  "engines": {
-    "node": ">=20.19.0"
+    "vitest": "^4.0.15"
   },
   "prettier": "@sxzz/prettier-config",
   "tsdown": {

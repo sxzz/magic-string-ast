@@ -2,7 +2,7 @@
   "name": "magic-string-ast",
   "type": "module",
   "version": "1.0.3",
-  "packageManager": "pnpm@10.26.1",
+  "packageManager": "pnpm@10.27.0",
   "description": "magic-string with AST shortcut.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
@@ -45,15 +45,15 @@
     "magic-string": "^0.30.21"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.4.3",
+    "@sxzz/eslint-config": "^7.4.4",
     "@sxzz/prettier-config": "^2.2.6",
     "@types/node": "^25.0.3",
-    "@typescript/native-preview": "7.0.0-dev.20251221.1",
+    "@typescript/native-preview": "7.0.0-dev.20260103.1",
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",
     "magic-string-stack": "^1.1.0",
     "prettier": "^3.7.4",
-    "tsdown": "^0.18.2",
+    "tsdown": "^0.18.4",
     "typescript": "^5.9.3",
     "vitest": "^4.0.16"
   },

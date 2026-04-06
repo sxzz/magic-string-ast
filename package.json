@@ -54,7 +54,7 @@
     "magic-string-stack": "^1.1.0",
     "prettier": "^3.7.4",
     "tsdown": "^0.18.2",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "vitest": "^4.0.16"
   },
   "prettier": "@sxzz/prettier-config",

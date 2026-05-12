@@ -2,7 +2,7 @@
   "name": "magic-string-ast",
   "type": "module",
   "version": "1.0.3",
-  "packageManager": "pnpm@11.1.0",
+  "packageManager": "pnpm@11.1.1",
   "description": "magic-string with AST shortcut.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
@@ -16,12 +16,9 @@
     "url": "https://github.com/sxzz/magic-string-ast/issues"
   },
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": "./dist/index.js",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
   "files": [
     "dist"
   ],
@@ -29,7 +26,7 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=20.19.0"
+    "node": "^22.18.0 || >=24.0.0"
   },
   "scripts": {
     "lint": "eslint .",
@@ -45,21 +42,18 @@
     "magic-string": "^0.30.21"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^8.0.0",
-    "@sxzz/prettier-config": "^2.2.6",
-    "@types/node": "^25.0.3",
-    "@typescript/native-preview": "7.0.0-dev.20251221.1",
-    "bumpp": "^10.3.2",
-    "eslint": "^9.39.2",
+    "@sxzz/eslint-config": "^8.1.0",
+    "@sxzz/prettier-config": "^2.3.1",
+    "@types/node": "^25.7.0",
+    "@typescript/native-preview": "7.0.0-dev.20260512.1",
+    "bumpp": "^11.1.0",
+    "eslint": "^10.3.0",
     "magic-string-stack": "^1.1.0",
-    "prettier": "^3.7.4",
-    "tsdown": "^0.18.2",
-    "typescript": "^6.0.2",
-    "vitest": "^4.0.16"
+    "prettier": "^3.8.3",
+    "tsdown": "^0.22.0",
+    "tsdown-preset-sxzz": "^0.6.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.6"
   },
-  "prettier": "@sxzz/prettier-config",
-  "tsdown": {
-    "exports": true,
-    "inlineOnly": []
-  }
+  "prettier": "@sxzz/prettier-config"
 }

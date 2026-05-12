@@ -49,7 +49,7 @@
     "@sxzz/prettier-config": "^2.2.6",
     "@types/node": "^25.0.3",
     "@typescript/native-preview": "7.0.0-dev.20251221.1",
-    "bumpp": "^10.3.2",
+    "bumpp": "^11.0.0",
     "eslint": "^9.39.2",
     "magic-string-stack": "^1.1.0",
     "prettier": "^3.7.4",

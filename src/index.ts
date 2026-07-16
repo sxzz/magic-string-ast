@@ -1,4 +1,5 @@
-import MagicString, {
+import {
+  MagicString,
   type MagicStringOptions,
   type OverwriteOptions,
 } from 'magic-string'

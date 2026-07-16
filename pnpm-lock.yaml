@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  magic-string: ^1.0.0
+
 importers:
 
   .:
@@ -1432,9 +1435,6 @@ packages:
   magic-string-stack@1.1.0:
     resolution: {integrity: sha512-eAjQQ16Woyi71/6gQoLvn9Mte0JDoS5zUV/BMk0Pzs8Fou+nEuo5T0UbLWBhm3mXiK2YnFz2lFpEEVcLcohhVw==}
 
-  magic-string@0.30.21:
-    resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
-
   magic-string@1.0.0:
     resolution: {integrity: sha512-CGvjzMN08iv6w1mm4/x3Gh1hLb4VnyRUA15FFpl6CsCIGGoe36k7kY5KNz9QDbSBN5I/fWHM6ZlIkUTa5xdUEA==}
 
@@ -2595,7 +2595,7 @@ snapshots:
     dependencies:
       '@vitest/spy': 4.1.10
       estree-walker: 3.0.3
-      magic-string: 0.30.21
+      magic-string: 1.0.0
     optionalDependencies:
       vite: 8.1.5(@types/node@26.1.1)(jiti@2.7.0)(yaml@2.9.0)
 
@@ -2612,7 +2612,7 @@ snapshots:
     dependencies:
       '@vitest/pretty-format': 4.1.10
       '@vitest/utils': 4.1.10
-      magic-string: 0.30.21
+      magic-string: 1.0.0
       pathe: 2.0.3
 
   '@vitest/spy@4.1.10': {}
@@ -3285,11 +3285,7 @@ snapshots:
   magic-string-stack@1.1.0:
     dependencies:
       '@jridgewell/remapping': 2.3.5
-      magic-string: 0.30.21
-
-  magic-string@0.30.21:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.5
+      magic-string: 1.0.0
 
   magic-string@1.0.0:
     dependencies:
@@ -4000,7 +3996,7 @@ snapshots:
       '@vitest/utils': 4.1.10
       es-module-lexer: 2.3.1
       expect-type: 1.4.0
-      magic-string: 0.30.21
+      magic-string: 1.0.0
       obug: 2.1.3
       pathe: 2.0.3
       picomatch: 4.0.5

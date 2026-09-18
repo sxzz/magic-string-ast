@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/sxzz/magic-string-ast/issues"
   },
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.js",
     "./package.json": "./package.json"
